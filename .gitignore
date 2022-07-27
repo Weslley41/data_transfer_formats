@@ -4,3 +4,6 @@
 
 # Conventional directory for build output.
 build/
+
+# Pdf file
+/prog2_20212_aval2.pdf
