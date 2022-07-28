@@ -1,20 +1,36 @@
+import 'dart:io';
 
 abstract class Data {
 
-  List<String> _fields = [];
-  String _data = '';
+  List<String> fieldsList = [];
+  final Set<Map> dataSet = {};
 
-  void load(String fileName);
-  void save(String fileName);
+  void load(String fileName) {
+    File file = File(fileName);
+
+    data = file.readAsStringSync();
+  }
+
+  void save(String fileName) {
+    File file = File(fileName);
+
+    try {
+      file.writeAsStringSync(data);
+    } catch (error) {
+      file.createSync(recursive: true);
+      file.writeAsStringSync(data);
+    }
+  }
+
   void clear() {
-    _fields = [];
-    _data = '';
+    fieldsList.clear();
+    dataSet.clear();
   }
 
   set data(String data);
   set fields(List<String> fields);
-  String get data => _data;
-  List<String> get fields => _fields;
-  bool get hasData => _data.isNotEmpty;
+  String get data;
+  List<String> get fields;
+  bool get hasData => dataSet.isNotEmpty;
 
 }
