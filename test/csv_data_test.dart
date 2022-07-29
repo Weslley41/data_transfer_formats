@@ -41,8 +41,9 @@ void main() {
     final csvData = CSVData();
     csvData.load(inputFileTest);
     csvData.save(outputFileTest);
+    File inputFile = File(inputFileTest);
     File outputFile = File(outputFileTest);
 
-    expect(csvData.data, outputFile.readAsStringSync());
+    expect(inputFile.readAsStringSync(), outputFile.readAsStringSync());
   });
 }
