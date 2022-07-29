@@ -7,3 +7,6 @@ build/
 
 # Pdf file
 /prog2_20212_aval2.pdf
+
+# Output files
+examples_saves/
