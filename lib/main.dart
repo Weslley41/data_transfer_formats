@@ -1,5 +1,6 @@
 // import 'package:data_transfer_formats/csv_data.dart';
-import 'package:data_transfer_formats/xml_data.dart';
+// import 'package:data_transfer_formats/xml_data.dart';
+import 'package:data_transfer_formats/json_data.dart';
 
 void main() {
   /*
@@ -19,9 +20,17 @@ void main() {
   csvData.save('examples_saves/example.csv');
   */
 
+  /* 
   XMLData xmlData = XMLData();
   xmlData.load('examples/example.xml');
   print(xmlData.data);
-  // print("*xml fields*");
-  // print(xmlData.fields);
+  print("*xml fields*");
+  print(xmlData.fields);
+   */
+
+  JSONData jsonData = JSONData();
+  jsonData.load('examples/example.json');
+  jsonData.save('examples_saves/example.json');
+  print(jsonData.fields);
+
 }
