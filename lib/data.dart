@@ -30,7 +30,7 @@ abstract class Data {
   set data(String data);
   set fields(List<String> fields);
   String get data;
-  List<String> get fields;
+  List<String> get fields => fieldsList;
   bool get hasData => dataSet.isNotEmpty;
 
 }

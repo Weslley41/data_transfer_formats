@@ -50,7 +50,4 @@ abstract class DelimitedData extends Data {
   @override
   set fields(List<String> fields) => fieldsList = fields;
 
-  @override
-  List<String> get fields => fieldsList;
-
 }
