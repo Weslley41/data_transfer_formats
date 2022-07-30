@@ -3,7 +3,7 @@ import 'dart:io';
 abstract class Data {
 
   List<String> fieldsList = [];
-  final Set<Map> dataSet = {};
+  Set<Map> dataSet = {};
 
   void load(String fileName) {
     File file = File(fileName);
