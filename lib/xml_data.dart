@@ -8,27 +8,24 @@ class XMLData extends Data {
   set data(String data) {
     XmlDocument xmlData = XmlDocument.parse(data);
     final xmlElements = xmlData.rootElement.childElements;
-    List<String> xmlFields = [];
 
-    for (var row in xmlElements) {
+    for (XmlElement row in xmlElements) {
       Map<String, dynamic> mapRow = {};
-      for (var element in row.childElements) {
+      for (XmlElement element in row.childElements) {
         mapRow[element.name.toString()] = element.innerText;
-
-        if (row == xmlElements.first) {
-          xmlFields.add(element.name.toString());
-        }
       }
 
       dataSet.add(mapRow);
-      fields = xmlFields;
+      fields = List<String>.from(dataSet.first.keys);
     }
   }
 
   @override
   String get data {
+    if (!hasData) return '';
+
     XmlBuilder builder =  XmlBuilder();
-    builder.processing('xml', 'version=1.0');
+    builder.processing('xml', 'version="1.0"');
     builder.element('root', nest: () {
       for (var row in dataSet) {
         builder.element('row', nest: () {
