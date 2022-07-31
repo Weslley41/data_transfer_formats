@@ -1,4 +1,4 @@
-import 'package:data_transfer_formats/data.dart';
+part of 'datas.dart';
 
 abstract class DelimitedData extends Data {
 

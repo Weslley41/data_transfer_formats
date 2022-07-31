@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:test/test.dart';
-
-import 'package:data_transfer_formats/csv_data.dart';
+import 'package:data_transfer_formats/datas.dart';
 
 void main() {
   const inputFileTest = 'examples/example.csv';

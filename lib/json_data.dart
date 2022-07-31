@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'data.dart';
+part of 'datas.dart';
 
 class JSONData extends Data {
 

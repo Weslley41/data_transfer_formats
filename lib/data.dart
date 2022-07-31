@@ -1,4 +1,4 @@
-import 'dart:io';
+part of 'datas.dart';
 
 abstract class Data {
 

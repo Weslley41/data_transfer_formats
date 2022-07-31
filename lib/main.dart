@@ -1,6 +1,5 @@
-// import 'package:data_transfer_formats/csv_data.dart';
-// import 'package:data_transfer_formats/xml_data.dart';
-import 'package:data_transfer_formats/json_data.dart';
+
+import 'package:data_transfer_formats/datas.dart';
 
 void main() {
   /*
@@ -29,8 +28,12 @@ void main() {
    */
 
   JSONData jsonData = JSONData();
-  jsonData.load('examples/example.json');
+  try {
+    jsonData.load('examples/example.json');
+  } catch (e) {
+    print(e);
+  }
   jsonData.save('examples_saves/example.json');
-  print(jsonData.fields);
+  // print(jsonData.fields);
 
 }

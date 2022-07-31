@@ -1,6 +1,4 @@
-import 'package:xml/xml.dart';
-
-import 'package:data_transfer_formats/data.dart';
+part of 'datas.dart';
 
 class XMLData extends Data {
 

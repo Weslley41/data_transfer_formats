@@ -1,4 +1,4 @@
-import 'package:data_transfer_formats/delimited_data.dart';
+part of 'datas.dart';
 
 class CSVData extends DelimitedData {
   CSVData() : super(separator: ',', extensionFile: 'csv');
