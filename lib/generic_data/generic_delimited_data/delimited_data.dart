@@ -27,10 +27,11 @@ abstract class DelimitedData extends Data {
 
       Map<String, dynamic> mapRow = {};
       for (int i = 0; i < fields.length; i++) {
-        if (fields.length < fields[i].length) {
+        try {
+          mapRow[fields[i]] = row[i];
+        } on RangeError {
           throw SetDataErrorInvalidFormat();
         }
-        mapRow[fields[i]] = row[i];
       }
 
       dataSet.add(mapRow);
