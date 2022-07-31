@@ -4,6 +4,9 @@ abstract class Data {
 
   List<String> fieldsList = [];
   Set<Map> dataSet = {};
+  final String _extensionFile;
+
+  Data({required extensionFile}) : _extensionFile = extensionFile;
 
   void load(String fileName) {
     File file = File(fileName);

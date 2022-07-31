@@ -4,7 +4,9 @@ abstract class DelimitedData extends Data {
 
   final String _separator;
 
-  DelimitedData({required separator}) : _separator = separator;
+  DelimitedData({required separator, required extensionFile})
+  : _separator = separator,
+    super(extensionFile: extensionFile);
 
   String get separator => _separator;
 

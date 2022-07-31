@@ -4,6 +4,8 @@ import 'data.dart';
 
 class JSONData extends Data {
 
+  JSONData() : super(extensionFile: 'json');
+
   @override
   set data(String data) {
     dataSet = Set<Map>.from(jsonDecode(data));

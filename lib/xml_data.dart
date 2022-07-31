@@ -4,6 +4,8 @@ import 'package:data_transfer_formats/data.dart';
 
 class XMLData extends Data {
 
+  XMLData() : super(extensionFile: 'xml');
+
   @override
   set data(String data) {
     XmlDocument xmlData = XmlDocument.parse(data);
