@@ -1,4 +1,4 @@
-part of 'datas.dart';
+part of '../datas.dart';
 
 class JSONData extends Data {
 

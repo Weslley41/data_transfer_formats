@@ -1,5 +1,5 @@
 
-part of 'datas.dart';
+part of '../datas.dart';
 
 class UnknownError {
   @override
