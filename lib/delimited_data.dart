@@ -18,7 +18,7 @@ abstract class DelimitedData extends Data {
       List<String> row = splitData[indexRow].replaceAll('"', '').split(separator);
 
       if (indexRow == 0) {
-        fields = row;
+        fieldsList = row;
         continue;
       }
 
@@ -48,8 +48,5 @@ abstract class DelimitedData extends Data {
 
     return dataString;
   }
-
-  @override
-  set fields(List<String> fields) => fieldsList = fields;
 
 }

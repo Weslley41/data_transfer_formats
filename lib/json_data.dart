@@ -9,7 +9,7 @@ class JSONData extends Data {
   @override
   set data(String data) {
     dataSet = Set<Map>.from(jsonDecode(data));
-    fields = List<String>.from(dataSet.first.keys);
+    fieldsList = List<String>.from(dataSet.first.keys);
   }
 
   @override
@@ -19,8 +19,5 @@ class JSONData extends Data {
     JsonEncoder encoder = JsonEncoder.withIndent('\t');
     return encoder.convert(dataSet.toList());
   }
-
-  @override
-  set fields(List<String> fields) => fieldsList = fields;
 
 }

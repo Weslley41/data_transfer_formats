@@ -2,7 +2,7 @@ import 'dart:io';
 
 abstract class Data {
 
-  List<String> fieldsList = [];
+  List<String> _fieldsList = [];
   Set<Map> dataSet = {};
   final String _extensionFile;
 
@@ -26,14 +26,14 @@ abstract class Data {
   }
 
   void clear() {
-    fieldsList.clear();
+    _fieldsList.clear();
     dataSet.clear();
   }
 
   set data(String data);
-  set fields(List<String> fields);
+  set fieldsList(List<String> fields) => _fieldsList = fields;
   String get data;
-  List<String> get fields => fieldsList;
+  List<String> get fields => _fieldsList;
   bool get hasData => dataSet.isNotEmpty;
 
 }

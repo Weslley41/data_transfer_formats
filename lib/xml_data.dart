@@ -18,7 +18,7 @@ class XMLData extends Data {
       }
 
       dataSet.add(mapRow);
-      fields = List<String>.from(dataSet.first.keys);
+      fieldsList = List<String>.from(dataSet.first.keys);
     }
   }
 
@@ -41,6 +41,4 @@ class XMLData extends Data {
     return builder.buildDocument().toXmlString(pretty: true, indent: '\t');
   }
 
-  @override
-  set fields(List<String> fields) => fieldsList = fields;
 }
