@@ -6,7 +6,15 @@ class JSONData extends Data {
 
   @override
   set data(String data) {
-    dataSet = Set<Map>.from(jsonDecode(data));
+    try {
+      dataSet = Set<Map>.from(jsonDecode(data));
+    } on FormatException {
+      throw SetDataErrorInvalidFormat();
+    }
+
+    if (dataSet.first.keys.isEmpty) {
+      throw SetDataErrorFieldsRequired();
+    }
     fieldsList = List<String>.from(dataSet.first.keys);
   }
 

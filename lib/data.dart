@@ -9,12 +9,21 @@ abstract class Data {
   Data({required extensionFile}) : _extensionFile = extensionFile;
 
   void load(String fileName) {
-    File file = File(fileName);
-
-    data = file.readAsStringSync();
+    if (!fileName.endsWith(".$_extensionFile")) {
+      throw LoadDataErrorInvalidExtension();
+    }
+    try {
+      File file = File(fileName);
+      data = file.readAsStringSync();
+    } on FileSystemException {
+      throw LoadDataErrorFileNotFound();
+    }
   }
 
   void save(String fileName) {
+    if (!fileName.endsWith(".$_extensionFile")) {
+      throw SaveFileErrorInvalidExtension();
+    }
     File file = File(fileName);
 
     try {
@@ -26,14 +35,20 @@ abstract class Data {
   }
 
   void clear() {
-    _fieldsList.clear();
-    dataSet.clear();
+    try {
+      _fieldsList.clear();
+      dataSet.clear();
+    } catch (e) {
+      throw UnknownError();
+    }
   }
 
-  set data(String data);
   set fieldsList(List<String> fields) => _fieldsList = fields;
-  String get data;
   List<String> get fields => _fieldsList;
   bool get hasData => dataSet.isNotEmpty;
+
+  // Not implemented methods
+  set data(String data);
+  String get data;
 
 }

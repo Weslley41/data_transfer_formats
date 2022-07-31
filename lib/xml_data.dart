@@ -6,7 +6,14 @@ class XMLData extends Data {
 
   @override
   set data(String data) {
-    XmlDocument xmlData = XmlDocument.parse(data);
+    late XmlDocument xmlData;
+
+    try {
+      xmlData = XmlDocument.parse(data);
+    } catch (e) {
+      throw SetDataErrorInvalidFormat();
+    }
+
     final xmlElements = xmlData.rootElement.childElements;
 
     for (XmlElement row in xmlElements) {
@@ -16,8 +23,11 @@ class XMLData extends Data {
       }
 
       dataSet.add(mapRow);
-      fieldsList = List<String>.from(dataSet.first.keys);
     }
+    if (dataSet.first.keys.isEmpty) {
+      throw SetDataErrorFieldsRequired();
+    }
+    fieldsList = List<String>.from(dataSet.first.keys);
   }
 
   @override

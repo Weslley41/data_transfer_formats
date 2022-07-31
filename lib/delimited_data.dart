@@ -18,12 +18,18 @@ abstract class DelimitedData extends Data {
       List<String> row = splitData[indexRow].replaceAll('"', '').split(separator);
 
       if (indexRow == 0) {
+        if (row.isEmpty) {
+          throw SetDataErrorFieldsRequired();
+        }
         fieldsList = row;
         continue;
       }
 
       Map<String, dynamic> mapRow = {};
       for (int i = 0; i < fields.length; i++) {
+        if (fields.length < fields[i].length) {
+          throw SetDataErrorInvalidFormat();
+        }
         mapRow[fields[i]] = row[i];
       }
 
