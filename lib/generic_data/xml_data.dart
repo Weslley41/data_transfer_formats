@@ -6,6 +6,7 @@ class XMLData extends Data {
 
   @override
   set data(String data) {
+    if (data.isEmpty) throw SetDataErrorFieldsRequired();
     late XmlDocument xmlData;
 
     try {
