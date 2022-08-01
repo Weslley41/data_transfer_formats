@@ -1,41 +1,60 @@
 
 import 'package:data_transfer_formats/datas.dart';
 
+void testDataClass(Data instance, String type) {
+  const String pathToSave = 'examples_saves/example';
+  const Map<String, String> inputFilesPath = {
+    "ExampleSuccess": "examples/example",
+    "ExampleExtensionInvalid": "examples/example.txt",
+    "ExampleFormatInvalid": "examples/example_format_invalid",
+    "ExampleEmpty": "examples/example_empty",
+    "ExampleNotFound": "not/exists"
+  };
+
+  inputFilesPath.forEach((typeExample, filePath) {
+    try {
+      print('\n*Tests in ${type.toUpperCase()}Data*');
+      print('Type example file: $typeExample\n');
+
+      print('The object has data? ${instance.hasData}');
+      print('Loading file...');
+      if (typeExample == 'ExampleExtensionInvalid') {
+        instance.load(filePath);
+      } else {
+        instance.load('$filePath.$type');
+      }
+      print('The object has data? ${instance.hasData}');
+      print('\nData in object: ');
+      print(instance.data);
+      print('\nFields of object');
+      print(instance.fields);
+      print('\nSaving data on file...');
+      instance.save('$pathToSave.$type');
+      print('Saved in $pathToSave.$type');
+      print('Cleaning up object instance...');
+      instance.clear();
+      print('The object has data? ${instance.hasData}');
+    } catch (e) {
+      print('An error occurred: $e');
+      instance.clear();
+    }
+  });
+}
+
 void main() {
+
   CSVData csvData = CSVData();
+  testDataClass(csvData, 'csv');
 
-  csvData.load('examples/example.csv');
-  print("*data fields*");
-  print(csvData.fields);
-  /*
-  print("*data content*");
-  print(csvData.data);
+  TSVData tsvData = TSVData();
+  testDataClass(tsvData, 'tsv');
 
-  csvData.clear();
-  print("\n*clear data*");
-  print(csvData.fields);
-  print(csvData.data);
+  JSONData jsonData = JSONData();
+  testDataClass(jsonData, 'json');
 
-  csvData.save('examples_saves/example.csv');
-  */
+  XMLData xmlData = XMLData();
+  testDataClass(xmlData, 'xml');
 
-  
-  // XMLData xmlData = XMLData();
-  // xmlData.load('examples/example.xml');
-  // // print("*xml data*");
-  // // print(xmlData.data);
-  // print("\n*xml fields*");
-  // print(xmlData.fields);
-  
-
-  // JSONData jsonData = JSONData();
-  // jsonData.data = '[{}]';
-  // try {
-  //   jsonData.load('examples/example.json');
-  // } catch (e) {
-  //   print(e);
-  // }
-  // jsonData.save('examples_saves/example.json');
-  // print(jsonData.fields);
+  print('\nDeveloped by:\nAntônio Ivo\nWeslley de Jesus');
 
 }
